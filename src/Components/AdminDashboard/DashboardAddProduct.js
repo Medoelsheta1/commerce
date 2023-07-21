@@ -94,11 +94,11 @@ const DashboardAddProduct = () => {
 
                     <div className='images d-flex flex-column justify-content-center align-items-start'>
                         <div className='d-flex flex-column align-items-center '>
-                            {image1 ? <img src={URL.createObjectURL(image1)} alt='img1' />: <img src="/images/download.jpg" alt='img1'/>}
+                            {image1 ? <img src={URL.createObjectURL(image1)} alt='img1' />: <img src="https://pbs.twimg.com/media/FtsxswzaUAAZXJj?format=jpg&name=small" alt='img1'/>}
                             <label  className='btn  btn-danger mt-4' htmlFor='image-upload1'>Add first Image</label>                              
                         </div>
                         <div className='d-flex flex-column align-items-center '>
-                            {image2 ? <img src={URL.createObjectURL(image2)} alt='img2' /> : <img src='/images/download.jpg' alt='img2' />}
+                            {image2 ? <img src={URL.createObjectURL(image2)} alt='img2' /> : <img src='https://pbs.twimg.com/media/FtsxswzaUAAZXJj?format=jpg&name=small' alt='img2' />}
                             <label  className='btn  btn-danger' htmlFor='image-upload2'>Add second Image</label>                            
                         </div>
                     </div>
