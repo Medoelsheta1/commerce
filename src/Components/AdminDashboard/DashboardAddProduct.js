@@ -1,5 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { ToastContainer , toast } from 'react-toastify'
 
 const DashboardAddProduct = () => {
     const [image1 , setImage1] = useState('')
@@ -10,31 +12,30 @@ const DashboardAddProduct = () => {
     const [category , setCategory] = useState('')
     const [subCategory , setSubCategory] = useState('')
     const [isTrending , setIstrending] = useState('')
-
+    const navigate = useNavigate()
     const formHandler = (e) => {
         e.preventDefault()
-        // console.log(image1)
-    const formData = new FormData()
+    if(title &&price &&  description && category && isTrending && subCategory) {
+            axios.post('https://strapi-nbja.onrender.com/api/products' , {
+                "data": {
+                    title: title,
+                    price: price,
+                    // img1: image1,
+                    // img2: image2,
+                    description: description,
+                    // sub_categories: subCategory,
+                    // categories: category,   
+                    isTrending: isTrending     
+                    }  ,                    
+                })
 
-    formData.append('files', image1)
-    console.log(formData)
-        axios.post('https://strapi-nbja.onrender.com/api/products' , {
-            "data": {
-                title: title,
-                price: price,
-                img1: formData,
-                img2: {"data": image2},
-                description: description,
-                sub_categories: {"data": subCategory}                        
-                ,
-                "categories": category,   
-                isTrending: isTrending     
-                }  ,                    
+        toast.success('Adding Item Successfully')
+        navigate('/admin/home')        
+    }else {
+        toast.error('You must type all requirments')
+    }
 
 
-            })
-        // console.log(title +  description + price + category + subCategory + isTrending)
-        // console.log(category)
     }
     const image1Handler = (e) => {
         setImage1(e.target.files[0])
@@ -63,6 +64,7 @@ const DashboardAddProduct = () => {
 
 
     return (
+        <>
         <div className='dash-add-product p-2'>
             <h4>Add your product</h4>
             <form onSubmit={formHandler}>
@@ -109,6 +111,19 @@ const DashboardAddProduct = () => {
             <button className='btn btn-large btn-primary m-2 mt-4' type='submit'>Send</button>
             </form>
         </div>
+        <ToastContainer
+        position="top-left"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        /> 
+</>
     )
 }
 
