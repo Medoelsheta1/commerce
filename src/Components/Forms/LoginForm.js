@@ -64,6 +64,7 @@ const LoginForm = () => {
                     { isPassTouched && !isPassValid && <p className='text-danger mt-1'>Your pass Cant be empty</p>}
                 </div>
                 <div className='d-flex justify-content-between align-items-center'>
+                    <p>admin-login userName: admin , pass: admin4040</p>
                     <Link className=' forget text-white d-flex  mt-3'>Forget password?</Link>           
                 </div>
 

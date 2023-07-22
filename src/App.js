@@ -20,7 +20,6 @@ import ProductCustomization from './Components/AdminDashboard/ProductCustomizati
 function App() {
   const isLogin = useSelector(state => state.cart.isLogin)
   const isAdmin = useSelector(state => state.cart.isAdmin)
-  console.log(isAdmin)
   return (
     <div className="App position-relative overflow-hidden ">
       <Routes>
