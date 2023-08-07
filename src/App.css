@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 * {
   margin: 0;
   padding: 0;
@@ -964,6 +971,8 @@ ol {
   padding: 10px 7px;
   background-color: white;
   border-radius: 50%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
   text-align: center;
   display: block;
@@ -998,6 +1007,8 @@ ol {
   left: 0;
   width: 10%;
   height: 5px;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
   transition: 0.3s;
 }
 .dash-box:first-child::after {
@@ -1059,7 +1070,8 @@ ol {
 }
 .rounded .progress-track,
 .rounded .progress-fill {
-  box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+  -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+          box-shadow: inset 0 0 5px rgba(0,0,0,.2);
   border-radius: 3px;
 }
 
@@ -1096,7 +1108,10 @@ ol {
 @media(max-width: 620px) {
   .dash-home-content > div {
     gap: 20px!important;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     margin-left: 0;
   }
   .dash-home-content > div > div {
@@ -1128,7 +1143,8 @@ ol {
 .dash-product img {
   width: 60px;
   height: 60px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .dash-product svg {
   cursor: pointer;
@@ -1139,7 +1155,10 @@ tbody {
 }
 @media(max-width: 454px) {
   .dashboard  {
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
   .dashboard-list {
     width: 100%!important;
@@ -1151,7 +1170,8 @@ tbody {
 .productCustomizeImage img {
   width: 130px;
   height: 200px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 
@@ -1169,11 +1189,15 @@ tbody {
 }
 @media(max-width: 767px) {
   .dash-add-product .images {
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }  
 }
 .images img {
   width: 200px;
+  -o-object-fit: cover;
   object-fit: cover;
   margin-top: 20px;
   margin-bottom: 20px;
