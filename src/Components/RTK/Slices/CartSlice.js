@@ -12,7 +12,7 @@ export const cartSlice = createSlice({
     reducers: {
         Add: (state , action) => {
             //
-            const itemIndex =  state.items.findIndex((item) => item.id === action.payload.id)
+            const itemIndex =  state.items.findIndex((item) => item.articles[0].code === action.payload.articles[0].code)
             const existItem = state.items[itemIndex]
                 if (existItem){
                     existItem.amount += +action.payload.quantaty
@@ -21,17 +21,17 @@ export const cartSlice = createSlice({
                 }
         },
         Remove: (state , action) => {
-            const itemIndex = state.items.findIndex((item) => item.id === action.payload.id)
+            const itemIndex = state.items.findIndex((item) => item.articles[0].code === action.payload.articles[0].code)
             const existItem = state.items[itemIndex]
             
             if (existItem.amount > 1) {
                 existItem.amount--
             }else {
-                state.items = state.items.filter((item)=> item.id !== action.payload.id)
+                state.items = state.items.filter((item)=> item.articles[0].code !== action.payload.articles[0].code)
             }
         },
         Delete: (state , action) => {
-            state.items = state.items.filter((item)=> item.id !== action.payload.id)
+            state.items = state.items.filter((item)=> item.articles[0].code !== action.payload.articles[0].code)
         },
         Reset: (state) => {
             state.items = []

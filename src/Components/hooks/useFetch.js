@@ -2,21 +2,24 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 
 
-const  useFetch =  (url) => {
+const  useFetch =  (url , subCategory , productcode) => {
     const [data , setData] = useState([])
     const [isLoading , setIsLoading] = useState(false)
     const [error , setError] = useState(false)
+    console.log(subCategory)
     useEffect(() => {
         const fetchData = async () => {
             setIsLoading(true)
             try {
                 
-                const res = await axios.get(`https://strapi-nbja.onrender.com/api/${url}` , {
+                const res = await axios.request(`https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/${url}${subCategory ? `?categories=${subCategory}` : ''}${productcode? `?productcode=${productcode}` : ''}` , {
                     headers: {
-                        Authorization: 'bearer 268fd66b94e80e358665336de61607d0a45285c90a8ef7eecb81248ce56014cab292980f703d428529b7343645532865a38988bf718af4aa882ff94c5aed874b7045a0715a95e338c0fa5d23bd030cacc39ca3bbc2c7a19acc832064b25fab54e43e497316688029965614fbdbd61325278b18948aa0edfb80f9aca6331b65a6'
+                        'X-RapidAPI-Key': 'f181185155msh30e51881aa5054cp1c1fe5jsn69b4d28c3b06',
+                        'X-RapidAPI-Host': 'apidojo-hm-hennes-mauritz-v1.p.rapidapi.com'
                     }
-                })
-                setData(res.data.data)
+                    
+            })
+                setData(res.data)
                 setIsLoading(false) 
             }catch(err) {
                 setError(true)
@@ -25,7 +28,7 @@ const  useFetch =  (url) => {
 
         fetchData()
         
-    }, [url])
+    }, [url, subCategory , productcode])
 
     return {
         data,

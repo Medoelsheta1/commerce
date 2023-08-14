@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import {AiOutlineSearch} from 'react-icons/ai'
 import {BsPerson} from 'react-icons/bs'
 import {BiLogOut} from 'react-icons/bi'
-import {RiAdminFill} from 'react-icons/ri'
 import {FaCartArrowDown} from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
 import Cart from '../Cart/Cart'
@@ -12,13 +11,12 @@ const HeaderContent = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [viewCart , setViewCart] = useState(false)
-    const isAdmin = useSelector(state => state.cart.isAdmin)
     const products = useSelector(state => state.cart.items)
     const isLogin = useSelector(state => state.cart.isLogin)
     const totalPrice = () => {
         let total = 0
         products.forEach(e => {
-            total += e.attributes.price * e.amount
+            total += e?.price?.value * e.amount
         });;
         return total.toFixed();
     }
@@ -42,12 +40,6 @@ const HeaderContent = () => {
                 <div style={{cursor: 'pointer'}} className=' header-upper-links col-lg-12 col-md-12 col-xl-5  d-flex justify-content-around align-items-center'>
                         {isLogin ?  
                             <>
-                                {isAdmin && <div className='d-flex flex-row justify-content-start align-items-center '>
-                                    <RiAdminFill className='text-white fs-1 fw-bold me-2'   />
-                                    <h3 className='text-white text-center mt-1'>
-                                        <Link to='/admin/home' className='text-white'>Admin</Link>
-                                    </h3>
-                                </div>}
                                 <div className='d-flex flex-row justify-content-start align-items-center '>
                                     <BsPerson className='text-white fs-1 fw-bold me-2'   />
                                     <h3 className='text-white text-center mt-1'>

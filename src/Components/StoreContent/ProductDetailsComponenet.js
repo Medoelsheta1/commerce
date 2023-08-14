@@ -10,6 +10,7 @@ import { ToastContainer , toast } from 'react-toastify'
 const ProductDetailsCombonent = ({item }) => {
     const [quantaty , setQuantaty] = useState(1)
     const dispatch = useDispatch()
+    console.log(item)
     const addToCartHandler = () => {
         dispatch(Add({...item , amount: quantaty , quantaty: quantaty }))
         toast.success('Adding Items successfully')
@@ -18,10 +19,10 @@ const ProductDetailsCombonent = ({item }) => {
         <>
             <div className='right col-lg-6 col-12'>
                 <div className='details'>
-                    <h2 className='mb-3'>{item.attributes.title}</h2>
-                    <span className='productPrice text-primary fs-2 d-block  mb-3'>{item.attributes.price}$</span>
+                    <h2 className='mb-3'>{item?.name}</h2>
+                    <span className='productPrice text-primary fs-2 d-block  mb-3'>{item?.whitePrice.price}$</span>
                     <h3>Description</h3>
-                    <p>{item.attributes.description}</p>
+                    <p>{item?.description}</p>
                 </div>
                 <div className='controlButtons mb-4'>
                     <button className='btn btn-outline-secondary' onClick={() => setQuantaty(quantaty === 1 ? 1 : quantaty - 1)}>-</button>

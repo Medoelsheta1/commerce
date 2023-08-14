@@ -2,7 +2,7 @@ import React from 'react'
 import SectionOne from '../Components/Home-content/SectionOne'
 import SectionTwo from '../Components/Home-content/SectionTwo'
 import SectionThree from '../Components/Home-content/SectionThree'
-import SectionFour from '../Components/Home-content/SectionFour'
+// import SectionFour from '../Components/Home-content/SectionFour'
 
 const Home = () => {
     return (
@@ -10,7 +10,7 @@ const Home = () => {
             <SectionOne />
             <SectionTwo />
             <SectionThree />
-            <SectionFour />
+            {/* <SectionFour /> */}
         </div>
     )
 }

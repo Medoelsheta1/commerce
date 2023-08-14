@@ -11,15 +11,11 @@ import Profile from './pages/Profile';
 import { useSelector } from 'react-redux';
 import PageNotFound from './pages/PageNotFound';
 import Contact from './pages/Contact';
-import Admin from './pages/Admin';
+
 import Login from './pages/Login';
-import DashboardProduct from './Components/AdminDashboard/DashboardProduct';
-import DashboardAddProduct from './Components/AdminDashboard/DashboardAddProduct';
-import DashboardHome from './Components/AdminDashboard/DashboardHome';
-import ProductCustomization from './Components/AdminDashboard/ProductCustomization';
 function App() {
   const isLogin = useSelector(state => state.cart.isLogin)
-  const isAdmin = useSelector(state => state.cart.isAdmin)
+
   return (
     <div className="App position-relative overflow-hidden ">
       <Routes>
@@ -35,12 +31,6 @@ function App() {
           <Route path='store/search' element={<Store />} />
           <Route path='store/search/:search' element={<Store />} />
           {isLogin && <Route path='profile' element={<Profile />} />}
-          {isLogin && isAdmin && <Route path='admin' element={<Admin />}  >
-              <Route path='home' element={<DashboardHome />} />
-              <Route path='products' element={<DashboardProduct />} />
-              <Route path='products/:id' element={<ProductCustomization />} />
-              <Route path='addProducts' element={<DashboardAddProduct />} />
-            </Route>}
           <Route path="*" element={<PageNotFound />} />
           <Route path='contact' element={<Contact />} />
         </Route>
