@@ -6,7 +6,6 @@ const  useFetch =  (url , subCategory , productcode) => {
     const [data , setData] = useState([])
     const [isLoading , setIsLoading] = useState(false)
     const [error , setError] = useState(false)
-    console.log(subCategory)
     useEffect(() => {
         const fetchData = async () => {
             setIsLoading(true)

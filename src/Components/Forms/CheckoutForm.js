@@ -7,22 +7,28 @@ import { ToastContainer, toast } from 'react-toastify'
 const CheckoutForm = (props) => {
     const locationRef = useRef()
     const postCodeRef = useRef()
+    const nameRef = useRef()
+    const emailRef = useRef()
     const products = useSelector(state => state.cart.items)
     const [orderIsDone , setOrderIsDone] = useState(false)
-
+console.log(products)
     const formHandler = async (e) => {
         e.preventDefault()
+        
         try {
             toast.info('Sending your order')
-            await axios.post('https://strapi-nbja.onrender.com/api/orders' , {
-                "data": {
-                    name: props.user.username,
-                    email: props.user.email,
-                    products: products,
-                    location: locationRef.current.value,
-                    postCode: postCodeRef.current.value                    
-                } 
-        })
+            fetch("https://foodorder-278d4-default-rtdb.firebaseio.com/orders.json" , {
+                method: "POST",
+                body: JSON.stringify({
+                    information: {
+                        name: nameRef,
+                        street: locationRef,
+                        postcode: postCodeRef,
+                        city: emailRef
+                    },
+                    
+            })})
+            
                 setOrderIsDone(true)
                 toast.success('Succcessfully sent your order')
             
@@ -44,9 +50,9 @@ const CheckoutForm = (props) => {
             <form className='checkout-form' onSubmit={formHandler}>
                 <h1 className='mb-3'>CheckoutForm</h1>
                 <label className='mb-3 h5'>Your Name</label>
-                <input className='w-100 p-2 mb-4' type='text' disabled={true} value={props.user.username ? props.user.username : ''} />
+                <input ref={nameRef} className='w-100 p-2 mb-4' type='text' />
                 <label className='mb-3 h5'>Your Email</label>
-                <input className='w-100 p-2 mb-4' type='email' disabled={true}  value={props.user.email ? props.user.email : ''} />
+                <input ref={emailRef} className='w-100 p-2 mb-4' type='email'  />
                 <label className='mb-3 h5'>Your postCode</label>
                 <input ref={postCodeRef} className='w-100 p-2 mb-4' type='number' required  />
                 <label className='mb-3 h5'>Your Location</label>

@@ -13,14 +13,14 @@ const Cart = (props) => {
     const isLogin = useSelector(state => state.cart.isLogin)
     const userData = useSelector(state => state.cart.userData)
     const [payNow , setPayNow] = useState(false)
+
     const totalPrice = () => {
         let total = 0
         products.forEach(e => {
-            total += e.price.value * e.amount
+            total += e?.price ? e?.price?.value * e?.amount :  e?.whitePrice?.price * e.amount
         });;
         return total.toFixed(2);
     }
-    console.log(products)
     const paymentHandler = () => {
         if (!isLogin) {
             toast.error('You must login first')
@@ -43,14 +43,14 @@ const Cart = (props) => {
                 products.map((item) => {
                     return (
                         <div key={item?.code} className='cart-content d-flex gap-10 align-items-start'>
-                            <img className='productImageCart' src={`${item?.images[0]?.url ? item?.images[0]?.url : item?.articlesList[0]?.galleryDetails[0]?.baseUrl }`} alt='productImageCart'/>
+                            <img className='productImageCart' src={`${item?.images ? item?.images[0]?.url : item?.articlesList[0]?.galleryDetails[0]?.baseUrl }`} alt='productImageCart'/>
                             <div className='cart-text p-1  '>
                                 <h5 className='fs-6  '>{item?.name}</h5>
                                 {/* <p>{item?.description}</p> */}
                                     <div className='d-flex justify-content-around align-items-center text-primary '>
                                         <button className=' btn btn-primary text-white' onClick={() => dispatch(Remove(item)) && toast.success('Removing Item successfully')}>-</button>
                                         <div>
-                                            <span>{item.amount}&nbsp;&nbsp;</span><span>x&nbsp;&nbsp;</span><span>$&nbsp;{item.price.value}</span>
+                                            <span>{item?.amount}&nbsp;&nbsp;</span><span>x&nbsp;&nbsp;</span><span>$&nbsp;{item?.price ? item?.price?.value : item?.whitePrice?.price}</span>
                                         </div>
                                         <button className='btn btn-primary text-white' onClick={() => dispatch(Add({...item , quantaty: 1})) && toast.success('adding Item successfully')} >+</button>
                                     </div>

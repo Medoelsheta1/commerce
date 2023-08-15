@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ProductDetailsCombonent from '../Components/StoreContent/ProductDetailsComponenet'
 import useFetch from '../Components/hooks/useFetch'
 import { useParams } from 'react-router-dom'
-
+import Loader from '../Components/Loaders/Loader'
 const ProductDetails = () => {
         const [image , setImage] = useState(0)
         const params = useParams()
@@ -27,7 +27,7 @@ const ProductDetails = () => {
             </div>
             <ProductDetailsCombonent item={data.product}   />
         </div>
-        : 'Loading...'
+        : <Loader />
         }
         </>
     )

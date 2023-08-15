@@ -16,7 +16,7 @@ const HeaderContent = () => {
     const totalPrice = () => {
         let total = 0
         products.forEach(e => {
-            total += e?.price?.value * e.amount
+            total += e?.price ? e?.price?.value * e?.amount :  e?.whitePrice?.price * e.amount
         });;
         return total.toFixed();
     }
@@ -40,12 +40,12 @@ const HeaderContent = () => {
                 <div style={{cursor: 'pointer'}} className=' header-upper-links col-lg-12 col-md-12 col-xl-5  d-flex justify-content-around align-items-center'>
                         {isLogin ?  
                             <>
-                                <div className='d-flex flex-row justify-content-start align-items-center '>
+                                {/* <div className='d-flex flex-row justify-content-start align-items-center '>
                                     <BsPerson className='text-white fs-1 fw-bold me-2'   />
                                     <h3 className='text-white text-center mt-1'>
                                         <Link to='/profile' className='text-white'>Profile</Link>
                                     </h3>
-                                </div>
+                                </div> */}
                                 <div className='d-flex flex-row justify-content-start align-items-center ' onClick={() =>dispatch(LogOut()) }>
                                     <BiLogOut className='text-white fs-1 fw-bold me-2'   />
                                     <h3 className='text-white text-center mt-1'>

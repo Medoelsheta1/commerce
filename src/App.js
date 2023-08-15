@@ -7,14 +7,14 @@ import ProductDetails from './pages/ProductDetails';
 import ProductsCategory from './pages/ProductsCategory';
 import Signup from './pages/Signup';
 import Store from './Components/StoreContent/Store';
-import Profile from './pages/Profile';
-import { useSelector } from 'react-redux';
+// // import Profile from './pages/Profile';
+// import { useSelector } from 'react-redux';
 import PageNotFound from './pages/PageNotFound';
 import Contact from './pages/Contact';
 
 import Login from './pages/Login';
 function App() {
-  const isLogin = useSelector(state => state.cart.isLogin)
+  // const isLogin = useSelector(state => state.cart.isLogin)
 
   return (
     <div className="App position-relative overflow-hidden ">
@@ -30,7 +30,6 @@ function App() {
           <Route path='products/:category' element={<Store />} />
           <Route path='store/search' element={<Store />} />
           <Route path='store/search/:search' element={<Store />} />
-          {isLogin && <Route path='profile' element={<Profile />} />}
           <Route path="*" element={<PageNotFound />} />
           <Route path='contact' element={<Contact />} />
         </Route>

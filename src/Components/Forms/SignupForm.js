@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import LayoutForm from './LayoutForm'
 import { Link, useNavigate } from 'react-router-dom'
 import useInput from '../hooks/useInput'
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { LogIn } from '../RTK/Slices/CartSlice'
+import { ToastContainer, toast } from 'react-toastify'
+import Loader from '../Loaders/Loader'
 const SignupForm = () => {
     const Navigate = useNavigate()
     const dispatch = useDispatch()
+    const [loading , setLoading] = useState(false)
+    const [err , setError] = useState(false)
     const {value: name , isValid: isNameValid ,
         isTouched: isNameTouched ,inputHandler: nameInputHandler 
         , blurInputHandler: nameBlurHandler } = useInput(value => value.trim() !== '')
@@ -24,23 +28,36 @@ const SignupForm = () => {
     }    
     const formHandler = async (e) => {
         e.preventDefault()
+        setLoading(true)
         if (!formValidate){
+            setLoading(false)
+
             return;
         }
-        const res = await axios.post('https://strapi-nbja.onrender.com/api/auth/local/register' , {
-            username: name,
-            password: pass,
-            email: mail
-        })
-        const token = await res.data.jwt;
-        if (!res.ok){
-            console.log('invalid data try again')
+
+        try {
+            const res = await axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyD-1d12rA6rNwYiqjTXNB0RR7GB2V1RDW0' , {
+                username: name,
+                password: pass,
+                email: mail,
+                returnSecureToken: true
+            })
+
+            await dispatch(LogIn(res.idToken))   
+            setLoading(false)
+            toast.success('Sign up successfully')
+            Navigate('/')          
+            
+        
+        }catch(error) {
+            setError(true)
+            setLoading(false)
         }
-        await dispatch(LogIn(token))
-        Navigate('/')
+
 
     }
     return (
+        <>
         <LayoutForm header='Signup'>
             <form className='w-100 p-4 text-white' onSubmit={formHandler}>
                 <div  className='input w-100 mb-3'>
@@ -61,13 +78,29 @@ const SignupForm = () => {
                     <input className={`p-3 rounded w-100 ${isPassTouched && !isPassValid && 'bg-danger'}`} type='password' name='pass' id='pass' 
                     onBlur={passBlurHandler} onChange={passInputHandler} value={pass}/>
                     { isPassTouched && !isPassValid && <p className='text-danger mt-1'>Your pass Cant be empty</p>}
+                    {err && <p className='text-danger'>somthing went wrong please try again</p>}
                 </div>
                 <div className='buttons'>
                     <button className='btn btn-lg btn-primary d-block w-100 mt-3'>SignUp</button>
                     <Link to='/login' className='text-white'><button className='btn btn-lg btn-dark d-block w-100 mt-3'>Login</button></Link>
                 </div>
             </form>
-        </LayoutForm>
+        </LayoutForm>  
+        <ToastContainer
+        position="top-left"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        />   
+        {loading && <Loader />}
+        </>
+
     )
 }
 

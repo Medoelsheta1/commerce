@@ -6,12 +6,16 @@ import SectionThree from '../Components/Home-content/SectionThree'
 
 const Home = () => {
     return (
-        <div className='home'>
-            <SectionOne />
-            <SectionTwo />
-            <SectionThree />
-            {/* <SectionFour /> */}
-        </div>
+        <>
+        
+            <div className='home'>
+                <SectionOne />
+                <SectionTwo />
+                <SectionThree />
+                {/* <SectionFour /> */}
+            </div>        
+        </>
+
     )
 }
 

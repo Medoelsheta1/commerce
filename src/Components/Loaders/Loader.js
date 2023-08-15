@@ -1,9 +1,13 @@
 import React from 'react'
-// import svggg from '../../../public/images/loader.gif'
+// import Svg from '/src/Components'
+import {RiLoader4Fill} from 'react-icons/ri'
 const loader = () => {
     return (
         <div className='loader'>
-            {/* <svggg /> */}
+            <div className='loaderContent'>
+                <RiLoader4Fill />
+            </div>
+            
         </div>
     )
 }
