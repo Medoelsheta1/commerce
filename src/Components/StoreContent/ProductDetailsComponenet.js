@@ -10,7 +10,6 @@ import { ToastContainer , toast } from 'react-toastify'
 const ProductDetailsCombonent = ({item }) => {
     const [quantaty , setQuantaty] = useState(1)
     const dispatch = useDispatch()
-    console.log(item)
     const addToCartHandler = () => {
         dispatch(Add({...item , amount: quantaty , quantaty: quantaty }))
         toast.success('Adding Items successfully')

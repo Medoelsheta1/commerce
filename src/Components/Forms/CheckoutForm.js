@@ -11,7 +11,7 @@ const CheckoutForm = (props) => {
     const emailRef = useRef()
     const products = useSelector(state => state.cart.items)
     const [orderIsDone , setOrderIsDone] = useState(false)
-console.log(products)
+
     const formHandler = async (e) => {
         e.preventDefault()
         
