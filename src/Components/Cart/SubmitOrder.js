@@ -21,9 +21,9 @@ const SubmitOrder = (props) => {
                 <h3 className='ms-2'>Your Receipt</h3>
                 {products.map((ele)=>{
                     return (
-                        <div className='product d-flex justify-content-between align-items-center' key={ele.id}>
-                            <p className='m-3'>{ele.attributes.title}</p>
-                            <span className=''>{ele.attributes.price}</span>  
+                        <div className='product d-flex justify-content-between align-items-center' key={ele?.name}>
+                            <p className='m-3'>{ele?.name}</p>
+                            <span className=''>{ele?.price ? ele?.price?.value : ele?.whitePrice?.price}</span>  
                         </div>                              
                     )
                 })}

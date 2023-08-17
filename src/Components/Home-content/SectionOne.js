@@ -1,6 +1,7 @@
 import React from 'react'
 import AlternateBanner from './AlternateBanner'
-
+import img1 from '../../images/main-banner-1.jpg'
+import img2 from '../../images/main-banner.jpg'
 const SectionOne = () => {
     return (
         <>
@@ -15,10 +16,10 @@ const SectionOne = () => {
                             </ol>
                             <div className="carousel-inner rounded">
                                 <div className="carousel-item active">
-                                    <img className="d-block w-100" src="https://beconner.com/cdn/shop/files/main-banner-1_830x550.jpg?v=1687283527;" alt="First slide"/>
+                                    <img className="d-block w-100" src={img1} alt="First slide"/>
                                 </div>
                                 <div className="carousel-item">
-                                    <img className="d-block w-100" src="https://beconner.com/cdn/shop/files/main-banner-2_830x550.jpg?v=1687283551;" alt="Second slide"/>
+                                    <img className="d-block w-100" src={img2} alt="Second slide"/>
                                 </div>
                             </div>
                         </div>

@@ -11,29 +11,31 @@ const CheckoutForm = (props) => {
     const emailRef = useRef()
     const products = useSelector(state => state.cart.items)
     const [orderIsDone , setOrderIsDone] = useState(false)
-
+    const newProducts = []
+    products.map((ele) => newProducts.push({
+        amount: ele?.amount,
+        id: ele?.code,
+        name: ele?.name,
+        price: ele?.price ? ele?.price?.value : ele?.whitePrice?.price
+    }))
+    console.log(newProducts)
     const formHandler = async (e) => {
-        e.preventDefault()
-        
+        e.preventDefault() 
         try {
             toast.info('Sending your order')
-            fetch("https://foodorder-278d4-default-rtdb.firebaseio.com/orders.json" , {
-                method: "POST",
-                body: JSON.stringify({
-                    information: {
-                        name: nameRef,
-                        street: locationRef,
-                        postcode: postCodeRef,
-                        city: emailRef
-                    },
-                    
-            })})
-            
+            await axios.post("https://foodorder-278d4-default-rtdb.firebaseio.com/orders.json" , {
+                information: {
+                                name: nameRef.current.value,
+                                street: locationRef.current.value,
+                                postcode: postCodeRef.current.value,
+                                city: emailRef.current.value
+                            },
+                            order: newProducts
+            })
                 setOrderIsDone(true)
                 toast.success('Succcessfully sent your order')
             
         }catch(err) {
-            console.log(err)
             toast.error('Somthing went wrong please try again')
         }
 
