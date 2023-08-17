@@ -424,6 +424,43 @@ ol {
     margin-bottom: 30px;
   }
 }
+.main-banner .carousel img {
+  height: 450px;
+  width: 630px;
+}
+.alternate-banner img {
+  width: 308px;
+  height: 450px;
+}
+@media(max-width: 1110px) {
+  .main-banner .carousel img {
+    height: 400px;
+    width: 500px;
+  }
+  .alternate-banner img {
+    width: 220px;
+    height: 400px;
+  }
+}
+/* @media(max-width: 767px) {
+  .main-banner .carousel img {
+    height: 300px;
+    width: 300px;
+  }
+  .alternate-banner img {
+    width: 150px;
+    height: 300px;
+  } } */
+  @media(max-width: 570px) {
+    .main-banner .carousel img {
+      height: 300px;
+
+    }
+    .alternate-banner img {
+      height: 300px;
+    }
+  }
+
 
 /* end home page section one */
 
@@ -528,6 +565,8 @@ ol {
 } */
 .card {
   border: none!important;
+  width: 200px;
+  
 }
 
 .icons {
@@ -554,9 +593,13 @@ ol {
 }
 
 .card img {
-  -o-object-fit: cover;
-  object-fit: cover;
+
+  
   border-radius: 7px;
+  width: 200px;
+  height: 300px;
+  -o-object-fit: cover;  
+object-fit: cover;
 }
 
 @media(max-width: 545px) {
@@ -569,6 +612,25 @@ ol {
   .icons a {
     margin-bottom: 4px !important;
     padding: 3px;
+  }
+  .card {
+    width: 120px;
+  }
+  .card img {
+    width: 120px;
+    height: 180px;
+  }
+}
+@media(max-width: 330px) {
+  .card {
+    width: 100px;
+  }
+  .card img {
+    width: 100px;
+    height: 170px;
+}
+  .card p {
+    font-size: 12px;
   }
 }
 

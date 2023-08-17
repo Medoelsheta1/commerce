@@ -8,7 +8,7 @@ const SectionOne = () => {
             <section className='sectionOne container-xxl  pb-5 pt-5'>
                 
                 <div className='banners row   '>
-                    <div className=' main-banner col-lg-6 position-relative'>
+                    <div className=' main-banner col-sm-6 position-relative'>
                         <div id="banners" className="carousel slide" data-ride="carousel">
                             <ol className="carousel-indicators">
                                 <li data-bs-target="#banners" data-bs-slide-to="0" className="active"></li>
@@ -16,10 +16,10 @@ const SectionOne = () => {
                             </ol>
                             <div className="carousel-inner rounded">
                                 <div className="carousel-item active">
-                                    <img className="d-block w-100" src={img1} alt="First slide"/>
+                                    <img className="d-block" src={img1} alt="First slide"/>
                                 </div>
                                 <div className="carousel-item">
-                                    <img className="d-block w-100" src={img2} alt="Second slide"/>
+                                    <img className="d-block " src={img2} alt="Second slide"/>
                                 </div>
                             </div>
                         </div>
@@ -30,7 +30,7 @@ const SectionOne = () => {
                             <button className='btn btn-secondary btn-outline-secondar'>BUY NOW</button>
                         </div>
                     </div>  
-                    <div className='alternate-banners col-lg-6   gap-20 '>
+                    <div className='alternate-banners col-sm-6  d-flex justify-content-between '>
                         <AlternateBanner offer='BEST SALE' title='Men clothes' firstLine='From $19.00 to' secondLine=' $99.99 .' imageSrc='https://images.pexels.com/photos/1192609/pexels-photo-1192609.jpeg?auto=compress&cs=tinysrgb&w=1600'   />
                         <AlternateBanner offer='15% off' title='For shoes' firstLine='shop the latest piece' secondLine='styles and colors' imageSrc='https://images.pexels.com/photos/1159670/pexels-photo-1159670.jpeg?auto=compress&cs=tinysrgb&w=1600'  />
                         {/* <AlternateBanner offer='NEW ARRIVAL' title='But Ipad Air' firstLine='High-fidelity playback &' secondLine='ultra-low distrtion' imageSrc='../../images/catbanner-03.jpg'  /> */}

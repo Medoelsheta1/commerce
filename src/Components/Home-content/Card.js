@@ -13,7 +13,7 @@ const Card = (props) => {
         <>
         
         <div className={`card ${props.class} position-relative overflow-hidden`}>
-            <img src={props?.item?.images[0]?.url} alt='card_image' />
+            <img loading='lazy'  src={props?.item?.images[0]?.url} alt='card_image' />
             <p className='pb-0 mb-1 pt-2 fw-bold text-danger'>{props.item.name}</p>
             <div className='icons  d-flex flex-column justify-content-around align-items-center position-absolute '>
                 <Link className=' rounded-circle mb-3  text-white ' onClick={addItemHandler}>
