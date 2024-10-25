@@ -1,4 +1,4 @@
-# E-commerce-Website
+# E-commerce(LocalHub)
 MERN E-eommerce site built on React and NodeJs
 Abstract
 This project concentrates on building a E-commerce site with admin dashboard for full access control. The website is based on React and NodeJs with mongoDb and expressJs. It focuses on selling products and get the admin full access in all products, users and orders. The website display all products and gives details of each product.
